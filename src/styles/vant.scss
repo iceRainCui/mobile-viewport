@@ -1,0 +1,113 @@
+
+.van-button--primary{
+  background: #356DEE!important;
+}
+
+.mybottomToast{
+  top:auto!important;
+  background: rgb(0 0 0 / 80%)!important;
+}
+
+.startreport{  
+  top:50%!important;
+  border-radius:8px!important;
+  width:295px!important;
+  box-sizing: border-box;
+}
+
+.replay-vant-popup{
+  background: #F6F7F9!important;
+  will-change: transform;
+}
+
+.replayvantpopupIos{
+  position: absolute!important;
+  overflow-y: hidden!important;
+  -webkit-overflow-scrolling:auto!important;
+  transform: translate(0%, 0%) translateZ(0);
+}
+
+
+.myreport{  
+  top:50%!important;
+  border-radius:8px!important;
+  padding-bottom:24px!important;
+  width:295px!important;
+  box-sizing: border-box;
+}
+
+.myreport .van-dialog__content .van-dialog__message{  
+  text-align: justify!important;
+}
+
+.myreport .van-hairline--top::after{  
+  display: none!important;
+}
+
+.myreport .van-dialog__footer .van-button .van-button__content{
+  z-index: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0 auto;
+  border: 1px solid #165DFF;
+  border-radius: 2px;
+  padding: 11px 16px;  
+  width: 232px;
+  height: 44px;
+  background: #165DFF;
+  opacity: 1;
+  flex-direction: row;
+  gap: 4px;
+  align-self: stretch;
+  box-sizing: border-box;
+}
+
+.myreport .van-dialog__footer .van-button .van-button__content span{
+  display: flex;
+  align-items: center;
+  font-size: 16px;
+  font-weight: normal;
+  color: #FFF;
+  line-height: 22px;
+  letter-spacing: 0;
+}  
+
+.startreport .van-dialog__footer .van-button,.myreport .van-dialog__footer .van-button {
+  border: none;
+}  
+
+.startreport .van-dialog__footer .van-button:last-child{
+  .van-button__content span{
+    color: #356DEE;
+  }  
+} 
+
+.htmlbox img{
+  width:100%;
+}
+
+.filterbar {
+  .van-overlay,.filter-poup {
+    top: 84px !important;
+  }
+}
+
+.terminal-filterbar{
+  .terminal-filter-poup,.filter-poup {
+    top: 116px !important;
+  }
+}
+
+.couponDetailpoup{
+  height:366px;
+}
+
+.van-button .van-button__content .van-button__text{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height:100%;
+}
+

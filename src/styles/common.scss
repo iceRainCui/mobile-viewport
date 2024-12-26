@@ -1,0 +1,115 @@
+html,
+body {
+  margin: 0;
+  width: 100%;
+  height: 100%;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu,
+    Cantarell, 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  scroll-behavior: smooth;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+p div span,* {
+  margin:0;
+  padding:0;
+}
+
+.mybottomToast{
+  top:auto!important;
+  background: rgb(0 0 0 / 80%)!important;
+}
+
+.van-image-preview__overlay{
+  z-index:99999!important;
+}
+
+.van-popup--center{
+  top:auto
+}
+
+.van-popup .van-picker .van-picker__toolbar button,.van-popup .van-picker .van-picker__toolbar div{
+  height:44px;
+  line-height: 44px;
+}
+
+.van-list__finished-text{
+  font-size:11px;
+}
+
+.van-toast--middle{
+  top: 50% !important;
+}
+
+.van-loading{
+  position: absolute;
+  top: 50%;
+  width:100%;
+  text-align: center;
+}
+
+.hevue-imgpreview-wrap .he-img-wrap{
+  background: rgb(0 0 0 / 70%)!important;
+}
+
+.mydescriptionpoup{
+  top: 50%;
+  border: 4px;
+  border-radius: 8px;
+  padding-right: 20px;
+  padding-left: 20px;
+  width: 280px !important;
+  font-family: SourceHanSansCN-Medium, sans-serif;
+  background: #fff;
+}
+
+.mypoup{
+  top:50%;
+  border:4px;
+  padding-right:20px;
+  padding-left:20px;
+}
+
+.my-van-popup{
+  background: #F6F7F9;
+}
+
+.van-uploader__preview-image{
+  border:1px solid #e6e6e6;
+}
+
+// 水平垂直居中
+.flex-c {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+// 左对齐
+.flex-fs {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  flex-direction: row;
+}
+
+.flex-ac {
+  display: flex;
+  align-items: center;
+}
+
+.van-toast--text{
+  border-radius: 4px;
+}
+
+.van-button__text{
+  font-size:16px;
+}
+
+.van-button{
+  border-radius: 2px!important;
+}

@@ -1,0 +1,106 @@
+kind: pipeline
+type: docker
+
+ssh_setting: &ssh
+  username: sync360
+  key:
+    from_secret: ssh_key
+
+ssh_setting: &test-ssh
+  username: sync360
+  key:
+    from_secret: test-ssh_key
+
+dev_setting: &test
+  host: p82253v.hulk.bjzdt.qihoo.net
+  <<: *test-ssh
+
+dev_setting: &regression
+  host: 10.229.0.121
+  <<: *test-ssh
+
+
+online_setting: &online
+  host:
+    - p45395v.hulk.shyc2.qihoo.net
+    - p45393v.hulk.shbt.qihoo.net
+    - p64121v.hulk.bjmd.qihoo.net
+  <<: *ssh
+
+build_job: &build
+  image: fulldigits/yarn:node-14
+  commands:
+  - npm set version 1.22.10
+  - npm install
+  - npm run build
+
+build_job: &build_test
+  image: fulldigits/yarn:node-14
+  commands:
+  - npm config set strict-ssl false
+  - npm install
+  - npm run build:test
+
+build_job: &build_regression
+  image: fulldigits/yarn:node-14
+  commands:
+  - npm config set strict-ssl false
+  - npm install
+  - npm run build:regression
+
+name: deploy
+
+steps:
+- name: build
+  <<: *build
+  when:
+    branch:
+    - master
+
+- name: build_regression
+  <<: *build_regression
+  when:
+    branch:
+    - regression
+
+- name: build_test
+  <<: *build_test
+  when:
+    branch:
+    - test
+
+- name: deploy_test
+  image: appleboy/drone-scp
+  settings:
+    <<: *test
+    target: /home/q/system/fe/esc-mobile-console
+    source: 
+    - dist/*
+    strip_components: 1
+  when:
+    branch:
+    - test
+- name: deploy_regression
+  image: appleboy/drone-scp
+  settings:
+    <<: *regression
+    target: /home/q/system/fe/esc-mobile-console
+    source: 
+     - dist/*
+    strip_components: 1
+  when:
+    branch:
+    - regression
+- name: deploy_online
+  image: appleboy/drone-scp
+  settings:
+    <<: *online
+    target: /home/q/system/fe/esc-mobile-console
+    source: 
+     - dist/*
+    strip_components: 1
+  when:
+    branch:
+    - master
+
+    
