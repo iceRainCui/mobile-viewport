@@ -4,19 +4,101 @@
 
 ## 一、引言
 
-#### 1. 你是否还在纠结于 rem 适配的繁琐计算与兼容性隐患
-
-#### 2. 你是否担心用了 vw 适配方案后在PC端表现不佳而痛苦？
-
-#### 3. 你是否还在如何在不同平台上确保统一且精准的样式适配而烦恼
-
-#### 4. 你是否为了搭建一个企业级应用而大费周折，各种lint和hook让你配置的晕头转向
-
-#### 5. 在移动端如何获取网络日志和log信息，是否还在为搭建虚拟机做适配而烦恼
 
 
+### 1. 你是否还在纠结于 rem 适配的繁琐计算与兼容性隐患
 
-### 💐💐💐本框架解决上面问题而诞生!!💐💐💐
+### 2. 你是否担心用了 vw 适配方案后在PC端表现不佳而痛苦？
+
+### 3. 你是否还在如何在不同平台上确保统一且精准的样式适配而烦恼
+
+### 4. 你是否为了搭建一个企业级应用而大费周折，各种lint和hook让你配置的晕头转向
+
+### 5. 在移动端如何获取网络日志和log信息，是否还在为搭建虚拟机做适配而烦恼
+
+
+
+## 💐💐💐本框架解决上面问题而诞生!!💐💐💐
+
+
+
+## 二、技术架构
+
+核心
+
+- `vue3`、`vite`、`vant`、`pinia` 、`ts`
+
+适配
+
+- autoprefixer:自动为 CSS 属性添加浏览器前缀
+- px2viewport: `px` 到 `vw` 的转换配置
+- postcss-mobile-forever: 
+
+### 目录结构
+
+```bash
+mobile-viewport
+├─.env                              # 通用环境变量
+├─.env.development                  # 开发环境环境变量
+├─.env.production                   # 生产环境环境变量
+├─.env.regression                   # 预发环境环境变量
+env.test                            # 测试环境环境变量
+├─.eslintignore                     # eslint忽略配置文件
+├─.eslintrc-auto-import.json        
+├─.eslintrc.cjs                     # eslint规则
+├─.gitignore                        # git忽略文件
+├─.npmrc                            # npm源配置
+├─.prettierrc.cjs                   # prettier配置
+├─.stylelintrc.json                 # stylelint配置
+├─README.md
+├─commitlint.config.cjs             # commitlint配置
+├─components.d.ts
+├─index.html
+├─package-lock.json
+├─package.json
+├─postcss.config.cjs                # 适配核心目录
+├─tsconfig.json                     # ts配置
+├─tsconfig.node.json
+├─vite.config.ts                    # vite配置
+├─src                               # 源码
+|  ├─App.vue
+|  ├─components.d.ts
+|  ├─main.ts                        # 入口文件
+|  ├─vite-env.d.ts
+|  ├─utils
+|  |   ├─request.ts                 # axios封装
+|  |   ├─storage.ts                 # storage封装
+|  |   └util.ts                     # common的utils
+|  ├─styles
+|  |   ├─common.scss                # 公共样式
+|  |   ├─index.scss
+|  |   ├─vant.scss                  # 自定义vant样式
+|  |   └variables.scss
+|  ├─store                          # store目录
+|  |   ├─index.ts
+|  |   ├─modules
+|  |   |    ├─user
+|  |   |    |  └index.ts
+|  ├─router                         # 路由配置
+|  |   └index.ts
+|  ├─pages                          # 页面目录
+|  |   ├─login
+|  |   |   └index.vue               # 示例页面
+|  ├─components                     # 公共组件
+|  ├─assets                         # 本地资源目录
+|  ├─api                            # api接口文档 (包含接口和类型)
+|  |  ├─login
+|  |  |   ├─index.ts
+|  |  |   └interface.ts
+├─public
+├─.husky                            # husky配置githook
+|   ├─commit-msg
+|   ├─pre-commit
+```
+
+
+
+## 三、关于适配
 
 ### 关于 rem 适配的痛点
 
@@ -25,7 +107,7 @@
 - 痛点2: **兼容性问题**：虽然 rem 在现代浏览器中得到了较好的支持，但在一些老旧版本的浏览器中，可能会出现兼容性问题，导致页面样式错乱。这对于企业级应用来说是一个严重的隐患，因为企业用户可能使用各种不同版本的浏览器来访问应用，而确保在所有浏览器上的一致性和稳定性是至关重要的。
 - 痛点3: **字体大小限制**：当使用 rem 来设置字体大小时，由于其是相对单位，可能会受到根元素字体大小的限制。在某些情况下，如需要在高分辨率屏幕上显示较大且清晰的字体时，rem 可能无法灵活地满足这一需求，从而影响页面的可读性和用户体验。
 
-### 如何在不同平台上确保统一且精准的样式适配？
+### 那如何在不同平台上确保统一且精准的适配？
 
 - **痛点**：PC 端和移动端屏幕尺寸、分辨率、像素密度等差异巨大，要实现统一的视觉效果和良好的用户体验极具挑战。例如，在 PC 端合适的字体大小和间距在移动端可能显得过大或过小，导致页面布局混乱、信息难以阅读，影响用户对产品的第一印象和使用意愿。
 - 使用媒体查询（Media Queries）
@@ -50,34 +132,13 @@
     - **学习成本**：对于不熟悉 `vw` 单位和 PostCSS 插件配置的开发者来说，需要花费一定的时间学习和理解相关的概念和技术，尤其是在处理一些复杂的样式场景时，可能需要深入掌握 `postcss-mobile-forever` 插件的各种参数配置和使用技巧，才能充分发挥其优势。
     - **小数像素问题**：在使用 `vw` 单位时，由于屏幕宽度的计算可能会产生小数像素值，在某些情况下可能会导致元素的边缘出现模糊或对齐不准确的问题。虽然可以通过一些 CSS 技巧（如 `transform: translateZ(0)` 等）来缓解，但这也增加了一定的复杂性和潜在的兼容性风险。
 
-## 二、技术架构核心组件
-
-核心
-
-- `vue3`
-- `vite`
-
-- `vant`
-
-- `pinia` 
-
-- `ts`
-
-适配
-
-- autoprefixer:自动为 CSS 属性添加浏览器前缀
-- px2viewport: `px` 到 `vw` 的转换配置
-- postcss-mobile-forever: 
-
-
-
-## 三、开发环境优化与工具配置
+## 四、开发环境优化与工具配置
 
 ### （一）Node 版本管理
 
 使用 Node 版本大于 14.18。在本地存在多个 Node 版本的情况下，推荐使用 `nvm`（Node Version Manager）进行版本切换，确保开发环境的稳定性和一致性。。
 
-## 四、开发流程与命令
+## 五、开发流程与命令
 
 ### （一）本地开发
 
@@ -92,7 +153,7 @@ npm run dev
 1. **测试包构建**：执行 `npm run build:test`。
 2. **正式包构建**：运行 `npm run build`。
 
-## 五、关键技术实现与优化策略
+## 六、关键技术实现与优化策略
 
 ### （一）响应式布局与适配
 
