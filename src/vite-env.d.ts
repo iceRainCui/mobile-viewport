@@ -58,6 +58,15 @@ declare interface Window {
   safe: {
     getSafeInstStatus: (arg: string) => Promise<boolean>;
   };
+  JSBridge: {
+    callNative: (
+      arg: string,
+      params: string,
+      callback: (arg: string) => void
+    ) => void;
+
+    handleNativeMessage: (arg: string) => void;
+  };
 }
 declare interface SafeCloud {
   postMessage: (arg: string) => void;
