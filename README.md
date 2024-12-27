@@ -19,7 +19,7 @@
 
 
 ## 💐💐💐本框架解决上面问题而诞生!!💐💐💐
-主要解决一个页面同时跑在andriod端、ios端、pc端运行，并且可以获取到日志信息，并规范jsbridge
+主要解决一个页面同时跑在andriod端、ios端、pc端运行，并且可以获取到日志信息，并添加jsbridge，实现js与native的交互
 
 
 
@@ -43,7 +43,7 @@ mobile-viewport
 ├─.env.development                  # 开发环境环境变量
 ├─.env.production                   # 生产环境环境变量
 ├─.env.regression                   # 预发环境环境变量
-env.test                            # 测试环境环境变量
+├─.env.test                            # 测试环境环境变量
 ├─.eslintignore                     # eslint忽略配置文件
 ├─.eslintrc-auto-import.json        
 ├─.eslintrc.cjs                     # eslint规则
@@ -69,6 +69,7 @@ env.test                            # 测试环境环境变量
 |  ├─utils
 |  |   ├─request.ts                 # axios封装
 |  |   ├─storage.ts                 # storage封装
+|  |   ├─jsbridge.ts                # jsbridge封装
 |  |   └util.ts                     # common的utils
 |  ├─styles
 |  |   ├─common.scss                # 公共样式
